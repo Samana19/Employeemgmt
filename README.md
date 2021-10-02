@@ -4,7 +4,7 @@
 
 
 ## Introduction
-
+Student Registration System is the type of management system software created to keep records of a students personal data.
 
 
 <br />
