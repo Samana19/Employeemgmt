@@ -34,7 +34,7 @@ Use the repo link to clone or download the zip file and extract it to run the co
 
 For thorough explanation on this project, [CLICK HERE](https://youtu.be/Drn2kfzqGmo)
 
-#### Name of student: Samana Shrestha
+### Name of student: Samana Shrestha
 ##### CU ID: 11781648 
 ##### Batch: March '30B'
 
