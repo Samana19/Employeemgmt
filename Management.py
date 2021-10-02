@@ -92,6 +92,29 @@ class System:
         show_all_btn = Button(details2, text="Show All", width=10, pady=5)
         show_all_btn.grid(row=0, column=5, padx=10, pady=10)
 
+        # Table Frame
+        table_frame = Frame(details2, bd=4, relief=RIDGE, bg="light salmon")
+        table_frame.place(x=10, y=70, height=490, width=800)
+
+        scroll_x = Scrollbar(table_frame, orient=HORIZONTAL)
+        scroll_y = Scrollbar(table_frame, orient=VERTICAL)
+        student_table = ttk.Treeview(table_frame, columns=("i.d.", "name", "email", "d.o.b", "gender", "contact", "address"), xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
+        scroll_x.pack(side=BOTTOM, fill=X)
+        scroll_y.pack(side=RIGHT, fill=Y)
+        scroll_x.config(command=student_table.xview)
+        scroll_y.config(command=student_table.yview)
+
+        student_table.heading("i.d.", text="ID")
+        student_table.heading("name", text="Name")
+        student_table.heading("email", text="Email")
+        student_table.heading("d.o.b", text="D.O.B")
+        student_table.heading("gender", text="Gender")
+        student_table.heading("contact", text="Contact No")
+        student_table.heading("address", text="Address")
+        student_table["show"] = "headings"
+
+        student_table.pack()
+
 
 root = Tk()
 obj = System(root)
