@@ -30,11 +30,10 @@ Use the repo link to clone or download the zip file and extract it to run the co
 
 <br />
 
-## Video Link , 
+## Video Link 
 
 For thorough explanation on this project, [CLICK HERE](https://youtu.be/Drn2kfzqGmo)
 
-### THE PHANTOM TROUPE 🕷
 #### Name of student: Samana Shrestha
 ##### CU ID: 11781648 
 ##### Batch: March '30B'
