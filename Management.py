@@ -16,7 +16,7 @@ class System:
         upload1 = Frame(self.root, bd=4, relief=RIDGE, bg="light salmon")
         upload1.place(x=20, y=100, height=580, width=450)
 
-        frame1_title = Label(upload1, text="Student Data Upload", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
+        frame1_title = Label(upload1, text="Student Data Upload", font=("Helvetica", 18, "bold"), fg="black", bg="light salmon")
         frame1_title.grid(row=0, columnspan=2, pady=20)
 
         id_label = Label(upload1, text="Student I.D.", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
@@ -63,15 +63,34 @@ class System:
         address_txt.grid(row=7, column=1, padx=20, pady=10, sticky="w")
         # Button Frame
         button_frame = Frame(upload1, bd=4, relief=RIDGE, bg="light salmon")
-        button_frame.place(x=10, y=500, width=430)
+        button_frame.place(x=15, y=500, width=410)
 
-        add_btn = Button(button_frame, text="Add", width=10).grid(row=0, column=0, padx=10, pady=10)
-        update_btn = Button(button_frame, text="Update", width=10).grid(row=0, column=0, padx=10, pady=10)
-        delete_btn = Button(button_frame, text="Delete", width=10).grid(row=0, column=0, padx=10, pady=10)
-        clear_btn = Button(button_frame, text="Clear", width=10).grid(row=0, column=0, padx=10, pady=10)
+        add_btn = Button(button_frame, text="Add", width=10)
+        add_btn.grid(row=0, column=0, padx=10, pady=10)
+        update_btn = Button(button_frame, text="Update", width=10)
+        update_btn.grid(row=0, column=1, padx=10, pady=10)
+        delete_btn = Button(button_frame, text="Delete", width=10)
+        delete_btn.grid(row=0, column=2, padx=10, pady=10)
+        clear_btn = Button(button_frame, text="Clear", width=10)
+        clear_btn.grid(row=0, column=3, padx=10, pady=10)
         # Second frame for user details
-        frame2 = Frame(self.root, bd=4, relief=RIDGE, bg="light salmon")
-        frame2.place(x=500, y=100, height=580, width=800)
+        details2 = Frame(self.root, bd=4, relief=RIDGE, bg="light salmon")
+        details2.place(x=500, y=100, height=580, width=830)
+
+        search_label = Label(details2, text="Search By", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
+        search_label.grid(row=0, column=0, padx=20, pady=10, sticky="w")
+
+        search_drop = ttk.Combobox(details2, font=("Helvetica", 11, "bold"), state="readonly")
+        search_drop['values'] = ("I.D.", "Name", "Contact")
+        search_drop.grid(row=0, column=1, padx=20, pady=10)
+
+        search_entry = Entry(details2, font=("Helvetica", 13, "bold"), bd=5, relief=SUNKEN)
+        search_entry.grid(row=0, column=2, padx=20, pady=10, sticky="w")
+
+        search_btn = Button(details2, text="Search", width=10, pady=5)
+        search_btn.grid(row=0, column=4, padx=10, pady=10)
+        show_all_btn = Button(details2, text="Show All", width=10, pady=5)
+        show_all_btn.grid(row=0, column=5, padx=10, pady=10)
 
 
 root = Tk()
