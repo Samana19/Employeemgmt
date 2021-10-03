@@ -19,7 +19,7 @@ def displayform():
     root = Tk()
     root.title("Employee Registration System")
     root.geometry("1350x700+90+0")
-    root.iconbitmap('students.ico')
+    root.iconbitmap('worker.ico')
 
     title_name = Label(root, text="Employee Registration System", bd=10, relief=GROOVE,
                        font=("Helvetica", 20, "bold"), bg="coral", fg="black")
