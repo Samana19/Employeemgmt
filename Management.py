@@ -162,9 +162,8 @@ def register():
         tkMessageBox.showinfo("Warning", "fill the empty field!!!")
     else:
 
-        insert_data = """INSERT INTO STUD_REGISTRATION (STU_ID text, STU_NAME text, STU_EMAIL text,STU_DOB text,STU_GENDER text, STU_CONTACT int, STU_ADDRESS text)\
-                  VALUES (?,?,?,?,?,?,?)"""#, (id1, name1, email1, dob1, gender1, con1, address1))n
-        conn.execute(insert_data, (id1, name1, email1, dob1, gender1, con1, address1))
+
+        conn.execute(f'''INSERT INTO STUD_REGISTRATION VALUES (:a,:b,:c,:d,:e,:f,:g)''', {"a":id1,"b": name1,"c": email1,"d": dob1,"e": gender1,"f": con1,"g": address1})
 
 
         conn.commit()
