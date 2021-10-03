@@ -8,7 +8,7 @@ import sqlite3
 def database():
     global conn, cursor
     # creating student database
-    conn = sqlite3.connect("student.db")
+    conn = sqlite3.connect("employee.db")
     cursor = conn.cursor()
     # creating STUD_REGISTRATION table
     cursor.execute(
@@ -117,7 +117,7 @@ def displayform():
             search_contact()
 
     def search_contact():
-        conn = sqlite3.connect("student.db")
+        conn = sqlite3.connect("employee.db")
         cursor = conn.cursor()
         # creating STUD_REGISTRATION table
         cursor.execute('''SELECT * FROM STUD_REGISTRATION''')
@@ -136,7 +136,7 @@ def displayform():
         conn.close()
 
     def search_name():
-        conn = sqlite3.connect("student.db")
+        conn = sqlite3.connect("employee.db")
         cursor = conn.cursor()
         # creating STUD_REGISTRATION table
         cursor.execute('''SELECT * FROM STUD_REGISTRATION''')
@@ -155,7 +155,7 @@ def displayform():
         conn.close()
 
     def search_ids():
-        conn = sqlite3.connect("student.db")
+        conn = sqlite3.connect("employee.db")
         cursor = conn.cursor()
         # creating STUD_REGISTRATION table
         cursor.execute('''SELECT * FROM STUD_REGISTRATION''')
