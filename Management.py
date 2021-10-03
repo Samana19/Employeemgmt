@@ -93,13 +93,13 @@ def displayform():
     button_frame = Frame(upload1, bd=4, relief=RIDGE, bg="light salmon")
     button_frame.place(x=15, y=500, width=410)
 
-    add_btn = Button(button_frame, text="Add", width=10, pady=5, command=register)
+    add_btn = Button(button_frame, text="Add", width=15, pady=5, command=register)
     add_btn.grid(row=0, column=0, padx=10, pady=10)
-    update_btn = Button(button_frame, text="Update", width=10, pady=5)
-    update_btn.grid(row=0, column=1, padx=10, pady=10)
-    delete_btn = Button(button_frame, text="Delete", width=10, pady=5, command=Delete)
+    #update_btn = Button(button_frame, text="Update", width=10, pady=5, command=Update)
+    #update_btn.grid(row=0, column=1, padx=10, pady=10)
+    delete_btn = Button(button_frame, text="Delete", width=15, pady=5, command=Delete)
     delete_btn.grid(row=0, column=2, padx=10, pady=10)
-    clear_btn = Button(button_frame, text="Clear", width=10, pady=5, command=Reset)
+    clear_btn = Button(button_frame, text="Clear", width=15, pady=5, command=Reset)
     clear_btn.grid(row=0, column=3, padx=10, pady=10)
     # Second frame for user details
     details2 = Frame(root, bd=4, relief=RIDGE, bg="light salmon")
@@ -147,6 +147,38 @@ def displayform():
     DisplayData()
 
 
+# function to update data into database
+'''def Update():
+    database()
+    # getting form data
+    name1 = name.get()
+    con1 = contact.get()
+    email1 = email.get()
+    id1 = id_no.get()
+    dob1 = dob.get()
+    gender1 = gender.get()
+    address1 = address.get()
+    # applying empty validation
+    if name1 == '' or con1 == '' or email1 == '' or id1 == '' or dob1 == '' or gender1 == "" or address1 == "":
+        tkMessageBox.showinfo("Warning", "fill the empty field!!!")
+    else:
+        #getting selected data
+        curItem = tree.focus()
+        contents = (tree.item(curItem))
+        selecteditem = contents['values']
+        #update query
+        conn.execute('UPDATE STUD_REGISTRATION SET STU_ID=?,STU_NAME=?,STU_EMAIL=?,STU_DOB text=?,STU_GENDER = ?, STU_CONTACT=?, STU_ADDRESS=? WHERE RID = ?',(name1, con1,email1,id1,dob1,gender1,address1, selecteditem[0]))
+
+        conn.commit()
+        tkMessageBox.showinfo("Message","Updated successfully")
+        #reset form
+        Reset()
+        #refresh table data
+        DisplayData()
+        conn.close()
+'''
+
+
 def register():
     database()
     # getting form data
@@ -162,9 +194,8 @@ def register():
         tkMessageBox.showinfo("Warning", "fill the empty field!!!")
     else:
 
-
-        conn.execute(f'''INSERT INTO STUD_REGISTRATION VALUES (:a,:b,:c,:d,:e,:f,:g)''', {"a":id1,"b": name1,"c": email1,"d": dob1,"e": gender1,"f": con1,"g": address1})
-
+        conn.execute(f'''INSERT INTO STUD_REGISTRATION VALUES (:a,:b,:c,:d,:e,:f,:g)''',
+                     {"a": id1, "b": name1, "c": email1, "d": dob1, "e": gender1, "f": con1, "g": address1})
 
         conn.commit()
         tkMessageBox.showinfo("Message", "Stored successfully")
@@ -243,13 +274,28 @@ def DisplayData():
     # loop for displaying all data in GUI
     for data in fetch:
         tree.insert('', 'end', values=(data))
+        tree.bind("<Double-1>", OnDoubleClick)
     cursor.close()
     conn.close()
 
-    # calling function
+
+def OnDoubleClick(self):
+    # getting focused item from treeview
+    curItem = tree.focus()
+    contents = (tree.item(curItem))
+    selecteditem = contents['values']
+    # set values in the fields
+    id_no.set(selecteditem[0])
+    name.set(selecteditem[1])
+    email.set(selecteditem[2])
+    dob.set(selecteditem[3])
+    gender.set(selecteditem[4])
+    contact.set(selecteditem[5])
+    address.set(selecteditem[6])
 
 
+# calling function
 displayform()
 if __name__ == '__main__':
-    # Running Applicati
+    # Running Application
     mainloop()
