@@ -1,10 +1,10 @@
 <p align="center"><img src="https://github.com/Samana19/Studentmgmt/blob/1081f75e8365b84fcc393cfd06ec6201351f1335/students.ico" width="290"></p>
 
-<p align="center">STUDENT REGISTRATION SYSTEM</p>
+<p align="center">EMPLOYEE REGISTRATION SYSTEM</p>
 
 
 ## Introduction
-Student Registration System is the type of management system software created to keep records of a students personal data.
+Employee Registration System is the type of management system software created to keep records of a employee's personal data.
 
 
 <br />
@@ -12,7 +12,7 @@ Student Registration System is the type of management system software created to
 ## Techs and Tools
 <img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
 <img align="left" alt="Python" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png" />
-<img align="left" alt="MySQL" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mysql/mysql.png" />
+<img align="left" alt="Sqlite3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sqlite/sqlite.png" />
 <img align="left" alt="Pycharm" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/pycharm.svg" />
 
  
