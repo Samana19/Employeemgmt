@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/Samana19/Studentmgmt/blob/1081f75e8365b84fcc393cfd06ec6201351f1335/students.ico" width="290"></p>
+<p align="center"><img src="https://github.com/Samana19/Studentmgmt/blob/69c570e76b9a275f28d51acc870c2431c47c7784/Employee.PNG" width="290"></p>
 
 <p align="center">EMPLOYEE REGISTRATION SYSTEM</p>
 
