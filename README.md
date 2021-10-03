@@ -20,7 +20,7 @@ Student Registration System is the type of management system software created to
 
 ## Functions
 •	Tree view record system <br />
-•	Add or delete user data <br />
+•	Add ,update and delete user data <br />
 •	Simple GUI Interface <br />
 
 <br />
