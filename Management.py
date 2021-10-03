@@ -17,11 +17,11 @@ def database():
 
 def displayform():
     root = Tk()
-    root.title("Student Registration System")
+    root.title("Employee Registration System")
     root.geometry("1350x700+90+0")
     root.iconbitmap('students.ico')
 
-    title_name = Label(root, text="Student Registration System", bd=10, relief=GROOVE,
+    title_name = Label(root, text="Employee Registration System", bd=10, relief=GROOVE,
                        font=("Helvetica", 20, "bold"), bg="coral", fg="black")
     title_name.pack(side=TOP, fill=X)
 
@@ -43,17 +43,17 @@ def displayform():
     upload1 = Frame(root, bd=4, relief=RIDGE, bg="light salmon")
     upload1.place(x=20, y=100, height=580, width=450)
 
-    frame1_title = Label(upload1, text="Student Data Upload", font=("Helvetica", 18, "bold"), fg="black",
+    frame1_title = Label(upload1, text="Employee Data Upload", font=("Helvetica", 18, "bold"), fg="black",
                          bg="light salmon")
     frame1_title.grid(row=0, columnspan=2, pady=20)
 
-    id_label = Label(upload1, text="Student I.D.", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
+    id_label = Label(upload1, text=" I.D.", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
     id_label.grid(row=1, column=0, padx=20, pady=10, sticky="w")
 
     id_entry = Entry(upload1, textvariable=id_no, font=("Helvetica", 13, "bold"), bd=5, relief=SUNKEN)
     id_entry.grid(row=1, column=1, padx=20, pady=10, sticky="w")
 
-    name_label = Label(upload1, text="Student Name", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
+    name_label = Label(upload1, text=" Name", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
     name_label.grid(row=2, column=0, padx=20, pady=10, sticky="w")
 
     name_entry = Entry(upload1, textvariable=name, font=("Helvetica", 13, "bold"), bd=5, relief=SUNKEN)
