@@ -8,7 +8,7 @@ import sqlite3
 def database():
     global conn, cursor
     # creating student database
-    conn = sqlite3.connect("student.db")
+    conn = sqlite3.connect("employee.db")
     cursor = conn.cursor()
     # creating STUD_REGISTRATION table
     cursor.execute(
@@ -93,13 +93,13 @@ def displayform():
     button_frame = Frame(upload1, bd=4, relief=RIDGE, bg="light salmon")
     button_frame.place(x=15, y=500, width=410)
 
-    add_btn = Button(button_frame, text="Add", width=15, pady=5, command=register)
+    add_btn = Button(button_frame, text="Add", width=10, pady=5, command=register)
     add_btn.grid(row=0, column=0, padx=10, pady=10)
-    #update_btn = Button(button_frame, text="Update", width=10, pady=5, command=Update)
-    #update_btn.grid(row=0, column=1, padx=10, pady=10)
-    delete_btn = Button(button_frame, text="Delete", width=15, pady=5, command=Delete)
+    update_btn = Button(button_frame, text="Update", width=10, pady=5, command=Update)
+    update_btn.grid(row=0, column=1, padx=10, pady=10)
+    delete_btn = Button(button_frame, text="Delete", width=10, pady=5, command=Delete)
     delete_btn.grid(row=0, column=2, padx=10, pady=10)
-    clear_btn = Button(button_frame, text="Clear", width=15, pady=5, command=Reset)
+    clear_btn = Button(button_frame, text="Clear", width=10, pady=5, command=Reset)
     clear_btn.grid(row=0, column=3, padx=10, pady=10)
     # Second frame for user details
     details2 = Frame(root, bd=4, relief=RIDGE, bg="light salmon")
@@ -108,14 +108,80 @@ def displayform():
     search_label = Label(details2, text="Search By", font=("Helvetica", 15, "bold"), fg="black", bg="light salmon")
     search_label.grid(row=0, column=0, padx=20, pady=10, sticky="w")
 
+    def Search():
+        if search_drop.get() == 'ID':
+            search_ids()
+        if search_drop.get() == 'Name':
+            search_name()
+        if search_drop.get() == 'Contact':
+            search_contact()
+
+    def search_contact():
+        conn = sqlite3.connect("employee.db")
+        cursor = conn.cursor()
+        # creating STUD_REGISTRATION table
+        cursor.execute('''SELECT * FROM STUD_REGISTRATION''')
+        all = cursor.fetchall()
+        data2 = []
+        for id in all:
+            if search_entry.get() == str(id[5]):
+                # clear current data
+                tree.delete(*tree.get_children())
+                for data in id:
+                    data2.append(data)
+
+        tree.insert('', 'end', values=tuple(data2))
+        tree.bind("<Double-1>", OnDoubleClick)
+        cursor.close()
+        conn.close()
+
+    def search_name():
+        conn = sqlite3.connect("employee.db")
+        cursor = conn.cursor()
+        # creating STUD_REGISTRATION table
+        cursor.execute('''SELECT * FROM STUD_REGISTRATION''')
+        all = cursor.fetchall()
+        data2 = []
+        for id in all:
+            if search_entry.get() == id[1]:
+                # clear current data
+                tree.delete(*tree.get_children())
+                for data in id:
+                    data2.append(data)
+
+        tree.insert('', 'end', values=tuple(data2))
+        tree.bind("<Double-1>", OnDoubleClick)
+        cursor.close()
+        conn.close()
+
+    def search_ids():
+        conn = sqlite3.connect("employee.db")
+        cursor = conn.cursor()
+        # creating STUD_REGISTRATION table
+        cursor.execute('''SELECT * FROM STUD_REGISTRATION''')
+        all = cursor.fetchall()
+        data2 = []
+        for id in all:
+            if search_entry.get() == id[0]:
+                # clear current data
+                tree.delete(*tree.get_children())
+                for data in id:
+                    data2.append(data)
+
+        tree.insert('', 'end', values=tuple(data2))
+        tree.bind("<Double-1>", OnDoubleClick)
+        cursor.close()
+        conn.close()
+
     search_drop = ttk.Combobox(details2, font=("Helvetica", 11, "bold"), state="readonly")
-    search_drop['values'] = ("I.D.", "Name", "Contact")
+    search_drop['values'] = ("ID", "Name", "Contact")
     search_drop.grid(row=0, column=1, padx=20, pady=10)
+    search_drop.current(0)
 
     search_entry = Entry(details2, font=("Helvetica", 13, "bold"), bd=5, relief=SUNKEN)
     search_entry.grid(row=0, column=2, padx=20, pady=10, sticky="w")
 
-    search_btn = Button(details2, text="Search", width=10, pady=5, command=SearchRecord)
+    search_btn = Button(details2, text="Search", width=10, pady=5, command=Search)
     search_btn.grid(row=0, column=4, padx=10, pady=10)
     show_all_btn = Button(details2, text="Show All", width=10, pady=5, command=DisplayData)
     show_all_btn.grid(row=0, column=5, padx=10, pady=10)
@@ -148,7 +214,7 @@ def displayform():
 
 
 # function to update data into database
-'''def Update():
+def Update():
     database()
     # getting form data
     name1 = name.get()
@@ -162,21 +228,22 @@ def displayform():
     if name1 == '' or con1 == '' or email1 == '' or id1 == '' or dob1 == '' or gender1 == "" or address1 == "":
         tkMessageBox.showinfo("Warning", "fill the empty field!!!")
     else:
-        #getting selected data
+        # getting selected data
         curItem = tree.focus()
         contents = (tree.item(curItem))
         selecteditem = contents['values']
-        #update query
-        conn.execute('UPDATE STUD_REGISTRATION SET STU_ID=?,STU_NAME=?,STU_EMAIL=?,STU_DOB text=?,STU_GENDER = ?, STU_CONTACT=?, STU_ADDRESS=? WHERE RID = ?',(name1, con1,email1,id1,dob1,gender1,address1, selecteditem[0]))
+        # update query
+        conn.execute(
+            f'UPDATE STUD_REGISTRATION SET STU_ID=?,STU_NAME=?,STU_EMAIL=?,STU_DOB =?,STU_GENDER = ?, STU_CONTACT=?, STU_ADDRESS=? WHERE STU_ID = ?',
+            (id1, name1, email1, dob1, gender1, con1, address1, selecteditem[0]))
 
         conn.commit()
-        tkMessageBox.showinfo("Message","Updated successfully")
-        #reset form
+        tkMessageBox.showinfo("Message", "Updated successfully")
+        # reset form
         Reset()
-        #refresh table data
+        # refresh table data
         DisplayData()
         conn.close()
-'''
 
 
 def register():
@@ -241,7 +308,7 @@ def Delete():
     # function to search data
 
 
-def SearchRecord():
+'''def SearchRecord():
     # open database
     database()
     # checking search text is empty or not
@@ -257,9 +324,10 @@ def SearchRecord():
         for data in fetch:
             tree.insert('', 'end', values=(data))
         cursor.close()
-        conn.close()
+        conn.close()'''
 
-    # defining function to access data from SQLite database
+
+# defining function to access data from SQLite database
 
 
 def DisplayData():
