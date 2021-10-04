@@ -32,7 +32,7 @@ Use the repo link to clone or download the zip file and extract it to run the co
 
 ## Video Link 
 
-For thorough explanation on this project, [CLICK HERE](https://youtu.be/Drn2kfzqGmo)
+For thorough explanation on this project, [CLICK HERE](https://youtu.be/NTdXGV8_LYs)
 
 #### Name of student: Samana Shrestha
 ##### CU ID: 11781648 
