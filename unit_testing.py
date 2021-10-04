@@ -6,7 +6,7 @@ def tester():
     employee_id = "210246"
     employee_name = "Hello Shrestha"
     employee_email = "hello@gmail.com"
-    return (employee_id, employee_name, employee_email)
+    return employee_id, employee_name, employee_email
 
 
 def test_1(tester):
