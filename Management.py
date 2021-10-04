@@ -305,28 +305,6 @@ def Delete():
             cursor.close()
             conn.close()
 
-    # function to search data
-
-
-'''def SearchRecord():
-    # open database
-    database()
-    # checking search text is empty or not
-    if SEARCH.get() != "":
-        # clearing current display data
-        tree.delete(*tree.get_children())
-        # select query with where clause
-        cursor = conn.execute("SELECT * FROM STUD_REGISTRATION WHERE STU_NAME LIKE ?",
-                              ('%' + str(SEARCH.get()) + '%',))
-        # fetch all matching records
-        fetch = cursor.fetchall()
-        # loop for displaying all records into GUI
-        for data in fetch:
-            tree.insert('', 'end', values=(data))
-        cursor.close()
-        conn.close()'''
-
-
 # defining function to access data from SQLite database
 
 
