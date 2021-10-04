@@ -6,6 +6,8 @@ import sqlite3
 
 # function to define database
 def database():
+    """ database function is used to create table with specifies number of columns"""
+
     global conn, cursor
     # creating student database
     conn = sqlite3.connect("employee.db")
@@ -215,6 +217,8 @@ def displayform():
 
 # function to update data into database
 def Update():
+    """ Update function is used to edit and save user's information in the database """
+
     database()
     # getting form data
     name1 = name.get()
